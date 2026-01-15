@@ -14,7 +14,7 @@ export default {
         if(!isMatch){
             if (navigator.userAgentData && navigator.userAgentData.getHighEntropyValues) {
                 const uaData = await navigator.userAgentData.getHighEntropyValues([
-                    "platformVersion"
+                    "platform"
                 ]);
                 return uaData.platform === "iOS";
             }
