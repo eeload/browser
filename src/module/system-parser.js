@@ -28,7 +28,7 @@ import _watchOS from './system/watchOS.js';
 import userAgent from './runtime/userAgent.js';
 import globalThis from './runtime/globalThis.js';
 
-let systemList = [_Windows, _Linux, _macOS, _Android, _HarmonyOS, _Ubuntu, _FreeBSD, _Debian, _Deepin, _iOS, _Windows_Phone, _BlackBerry, _MeeGo, _Symbian, _Chrome_OS, _WebOS, _UOS, _CentOS, _Fedora, _Gentoo, _Red_Hat, _SUSE, _Slackware, _Wear_OS, _Tizen, _watchOS];
+const systemList = [_Windows, _Linux, _macOS, _Android, _HarmonyOS, _Ubuntu, _FreeBSD, _Debian, _Deepin, _iOS, _Windows_Phone, _BlackBerry, _MeeGo, _Symbian, _Chrome_OS, _WebOS, _UOS, _CentOS, _Fedora, _Gentoo, _Red_Hat, _SUSE, _Slackware, _Wear_OS, _Tizen, _watchOS];
 systemList.forEach(item=>{
     if(!item.is){
         item.is = async function(){
@@ -41,6 +41,48 @@ systemList.forEach(item=>{
         };
     }
 });
+
+const platformMap = {
+    "android": "Android",
+    "arm": "ARM",
+    "debian": "Linux (Debian)",
+    "freebsd-amd64": "FreeBSD (AMD64)",
+    "general mobile device": "General Mobile Device",
+    "haiku": "Haiku",
+    "hp-ux": "Hewlett Packard UNIX",
+    "ipad": "Apple iPad",
+    "iphone": "Apple iPhone",
+    "ipod-touch": "Apple iPod Touch",
+    "ios": "Apple iOS",
+    "linux aarch64": "Linux (AArch64)",
+    "linux armv7l": "Linux (armv7l)",
+    "linux armv8l": "Linux (armv8l)",
+    "linux mips": "Linux (MIPS)",
+    "linux i686": "Linux (i686)",
+    "linux x86_64": "Linux (x86_64)",
+    "linux": "Linux",
+    "macintel": "Intel based Mac",
+    "mac-os": "macOS",
+    "macppc": "PPC based Mac",
+    "mac68k": "Motorola 68K based Mac",
+    "nintendo": "Nintendo",
+    "new-nintendo-3ds": "Nintendo (3DS)",
+    "nintendo-switch": "Nintendo Switch",
+    "nintendo-wiiu": "Nintendo WiiU",
+    "openbsd-amd64": "OpenBSD (AMD64)",
+    "orbisos": "Orbis OS",
+    "playstation 4": "PlayStation 4",
+    "playstation vita": "PlayStation Vita",
+    "sunos": "SunOS",
+    "ubuntu": "Linux (Ubuntu)",
+    "unknown": "Unknown",
+    "win16": "Windows (16-Bit)",
+    "win32": "Windows (32-Bit)",
+    "win64": "Windows (64-Bit)",
+    "windows": "Windows",
+    "x11": "System running X11"
+};
+
 
 export default {
     name:'system',
@@ -110,7 +152,8 @@ export default {
         }
 
         if(globalThis?.navigator?.platform){
-            platform = globalThis.navigator.platform;
+            const key = globalThis.navigator.platform;
+            platform = platformMap[key.toLowerCase()]||'Unknown';
         }
         if(globalThis?.navigator?.userAgentData){
             architecture = await globalThis.navigator.userAgentData?.getHighEntropyValues(['architecture']).then(item => item.architecture||architecture);
