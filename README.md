@@ -151,7 +151,7 @@ console.log('[浏览器指纹]',data.value);
         <tr><td>Instagram</td><td>Instagram客户端</td></tr>
         <tr><td>X</td><td>X客户端（原Twitter）</td></tr>
         <tr><td>Snapchat</td><td>Snapchat客户端</td></tr>
-        <tr><td rowspan="16">爬虫</td>
+        <tr><td rowspan="18">爬虫</td>
         <td>Googlebot</td><td>谷歌爬虫</td></tr>
         <tr><td>Baiduspider</td><td>百度爬虫</td></tr>
         <tr><td>Sogouspider</td><td>搜狗爬虫</td></tr>
@@ -166,9 +166,9 @@ console.log('[浏览器指纹]',data.value);
         <tr><td>ChatGPT</td><td>ChatGPT蜘蛛</td></tr>
         <tr><td>Twitterbot</td><td>Twitter蜘蛛</td></tr>
         <tr><td>ClaudeBot</td><td>Claude Code蜘蛛</td></tr>
+        <tr><td>DuckDuckBot</td><td>DuckDuckGo蜘蛛</td></tr>
         <tr><td>Amazonbot</td><td>Amazon蜘蛛</td></tr>
         <tr><td>Google-Extended</td><td>Google AI蜘蛛</td></tr>
-        
         <tr><td>Headless</td><td>谷歌无头浏览器</td></tr>
     </tbody>
 </table>
