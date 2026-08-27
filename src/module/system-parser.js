@@ -5,6 +5,7 @@ import _Android from './system/Android.js';
 import _HarmonyOS from './system/HarmonyOS.js';
 import _Ubuntu from './system/Ubuntu.js';
 import _FreeBSD from './system/FreeBSD.js';
+import _OpenBSD from './system/OpenBSD.js';
 import _Debian from './system/Debian.js';
 import _Deepin from './system/Deepin.js';
 import _iOS from './system/iOS.js';
@@ -28,7 +29,7 @@ import _watchOS from './system/watchOS.js';
 import userAgent from './runtime/userAgent.js';
 import globalThis from './runtime/globalThis.js';
 
-const systemList = [_Windows, _Linux, _macOS, _Android, _HarmonyOS, _Ubuntu, _FreeBSD, _Debian, _Deepin, _iOS, _Windows_Phone, _BlackBerry, _MeeGo, _Symbian, _Chrome_OS, _WebOS, _UOS, _CentOS, _Fedora, _Gentoo, _Red_Hat, _SUSE, _Slackware, _Wear_OS, _Tizen, _watchOS];
+const systemList = [_Windows, _Linux, _macOS, _Android, _HarmonyOS, _Ubuntu, _FreeBSD, _OpenBSD, _Debian, _Deepin, _iOS, _Windows_Phone, _BlackBerry, _MeeGo, _Symbian, _Chrome_OS, _WebOS, _UOS, _CentOS, _Fedora, _Gentoo, _Red_Hat, _SUSE, _Slackware, _Wear_OS, _Tizen, _watchOS];
 systemList.forEach(item=>{
     if(!item.is){
         item.is = async function(){
@@ -153,7 +154,7 @@ export default {
 
         if(globalThis?.navigator?.platform){
             const key = globalThis.navigator.platform;
-            platform = platformMap[key.toLowerCase()]||'Unknown';
+            platform = platformMap[key.toLowerCase()] || platform || 'Unknown';
         }
         if(globalThis?.navigator?.userAgentData){
             architecture = await globalThis.navigator.userAgentData?.getHighEntropyValues(['architecture']).then(item => item.architecture||architecture);

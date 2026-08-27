@@ -200,6 +200,7 @@ console.log('[浏览器指纹]',data.value);
         <tr><td>Linux</td><td>开源操作系统</td></tr>
         <tr><td>Ubuntu</td><td>Linux发行版之一</td></tr>
         <tr><td>FreeBSD</td><td>Linux发行版之一</td></tr>
+        <tr><td>OpenBSD</td><td>Linux发行版之一</td></tr>
         <tr><td>Debian</td><td>Linux发行版之一</td></tr>
         <tr><td>Deepin</td><td>深度系统</td></tr>
         <tr><td>macOS</td><td>苹果电脑操作系统</td></tr>
