@@ -9,12 +9,11 @@ export default {
         let isCharging = true;
         let battery = 1;
         if(globalThis?.navigator?.getBattery){
-            isCharging = await globalThis.navigator.getBattery().then((battery) => {
-                return battery?.charging;
-            });
-            battery = await globalThis.navigator.getBattery().then((battery) => {
-                return +battery?.level||-1;
-            });
+            const batteryManager = await globalThis.navigator.getBattery().catch(()=>null);
+            if(batteryManager){
+                isCharging = batteryManager.charging;
+                battery = +batteryManager.level||-1;
+            }
         }
 
         return {

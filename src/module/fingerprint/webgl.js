@@ -37,7 +37,7 @@ export default {
         webgl.useProgram(program);
         program.vertexPosAttrib = webgl.getAttribLocation(program, "attrVertex");
         program.offsetUniform = webgl.getUniformLocation(program, "uniformOffset");
-        webgl.enableVertexAttribArray(program.vertexPosArray);
+        webgl.enableVertexAttribArray(program.vertexPosAttrib);
         webgl.vertexAttribPointer(program.vertexPosAttrib, buffer.itemSize, webgl.FLOAT, false, 0, 0);
         webgl.uniform2f(program.offsetUniform, 1, 1);
         webgl.drawArrays(webgl.TRIANGLE_STRIP, 0, buffer.numItems);

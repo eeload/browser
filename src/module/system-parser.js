@@ -90,12 +90,12 @@ export default {
     parse(ua = userAgent){
         let system = '';
         let systemVersion = '';
-        systemList.forEach(function(item){
-            if(item.parse(ua).is){
-                system = item.name;
-                systemVersion = item.parse(ua).version;
+        for(let loader of systemList){
+            if(loader.parse(ua).is){
+                system = loader.name;
+                systemVersion = loader.parse(ua).version;
             }
-        });
+        }
 
         let platform = '';
         if(ua.match(/(Win64|x64|WOW64|x86_64)/i)){

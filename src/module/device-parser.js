@@ -18,11 +18,11 @@ export default {
     name:'device',
     parse(ua = userAgent){
         let device = 'Desktop';
-        deviceList.forEach(function(item){
-            if(item.parse(ua).is){
-                device = item.name;
+        for(let loader of deviceList){
+            if(loader.parse(ua).is){
+                device = loader.name;
             }
-        });
+        }
         return {
             device
         };

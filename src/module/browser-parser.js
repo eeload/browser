@@ -137,9 +137,10 @@ engineList.forEach(item=>{
 
 const fixedParam = function(param){
     let {userAgent,engine,browser,browserVersion} = param;
-    if(browser == 'Chrome'&&userAgent.match(/\S+Browser/)){
-        browser = userAgent.match(/\S+Browser/)[0];
-        browserVersion = userAgent.replace(/^.*Browser\/([\d.]+).*$/)?.[1]||'';
+    const shellBrowserMatch = browser == 'Chrome' && userAgent.match(/(\S+Browser)\/([\d.]+)/);
+    if(shellBrowserMatch){
+        browser = shellBrowserMatch[1];
+        browserVersion = shellBrowserMatch[2];
         if(!browserVersion){
             browserVersion = userAgent.match(/Version\/([\d.]+)/)?.[1]||'';
         }
@@ -157,18 +158,18 @@ export default {
     parse(ua = userAgent){
         let browser = '';
         let browserVersion = '';
-        itemList.forEach(function(item){
-            if(item.parse(ua).is){
-                browser = item.name;
-                browserVersion = item.parse(ua).version;
+        for(let loader of itemList){
+            if(loader.parse(ua).is){
+                browser = loader.name;
+                browserVersion = loader.parse(ua).version;
             }
-        });
+        }
         let engine = '';
-        engineList.forEach(function(item){
-            if(item.parse(ua).is){
-                engine = item.name;
+        for(let loader of engineList){
+            if(loader.parse(ua).is){
+                engine = loader.name;
             }
-        });
+        }
 
         // 修正
         ({engine,browser,browserVersion} = fixedParam({userAgent:ua,engine,browser,browserVersion}));

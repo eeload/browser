@@ -54,7 +54,7 @@ let info = await browser.getInfo();
     "network": "wifi",                  // 网络类型
     "timezone":'Asia/Shanghai',         // 所处时区
     "isWebview": false,                 // 是否Webview(仅Android有效)
-    "isBot": false,                     // 是否搜索引擎蜘蛛程序
+    "isRobot": false,                     // 是否搜索引擎蜘蛛程序
     "isTouch": false,                   // 是否为触屏
     "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML,like Gecko) Chrome/119.0.0.0 Safari/537.36"
 }
