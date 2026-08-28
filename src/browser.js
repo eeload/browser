@@ -35,7 +35,6 @@ export default {
         return data;
     },
     async getInfo(list = ['browser','system','device','gpu','network','battery','screen','language','timezone']){
-        let data = {};
         let parserList = [
             browserParser,
             systemParser,
@@ -47,26 +46,21 @@ export default {
             languageParser,
             timezoneParser
         ].filter(parser=>list.includes(parser.name));
-        for(let parser of parserList){
-            data = Object.assign(data,await parser.getInfo());
-        }
-        return data;
+        let results = await Promise.all(parserList.map(parser=>parser.getInfo()));
+        return Object.assign({}, ...results);
     },
     async getFingerprint(list = ['webgl','canvas','font','audio','mime']){
-        let data = {};
         let parserList = [
-            getHashByWebGL,
-            getHashByCanvas,
-            getHashByFont,
-            getHashByAudio,
-            getHashByMime
+            getHashByWebGL, getHashByCanvas, getHashByFont, getHashByAudio, getHashByMime
         ].filter(parser=>list.includes(parser.name));
-        let {screenWidth,screenHeight,screenColorDepth,isTouch} = await screenParser.getInfo();
-        let group = [userAgent,JSON.stringify({screenWidth,screenHeight,screenColorDepth,isTouch})];
-        for(let parser of parserList){
-            data[parser.name] = await parser.getInfo();
-            group.push(data[parser.name]);
-        }
+        let {screenWidth, screenHeight, screenColorDepth, isTouch} = await screenParser.getInfo();
+        let group = [userAgent, JSON.stringify({screenWidth, screenHeight, screenColorDepth, isTouch})];
+        let values = await Promise.all(parserList.map(parser=>parser.getInfo()));
+        let data = {};
+        parserList.forEach((parser, index)=>{
+            data[parser.name] = values[index];
+            group.push(values[index]);  // 按 index 顺序 push，保证指纹稳定
+        });
         data['value'] = getMD5(group.join(','));
         return data;
     },

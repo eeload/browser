@@ -92,6 +92,8 @@ import _ClaudeBot from './robot/ClaudeBot.js';
 import _DuckDuckBot from './robot/DuckDuckBot.js';
 import _Google_Extended from './robot/Google-Extended.js';
 import _Amazonbot from './robot/Amazonbot.js';
+import _Applebot from './robot/Applebot.js';
+import _PetalBot from './robot/PetalBot.js';
 import _Headless from './robot/Headless.js';
 
 // 渲染引擎
@@ -109,7 +111,7 @@ import userAgent from './runtime/userAgent.js';
 const browserList = [_Safari, _Chrome, _Edge, _IE, _Firefox, _Firefox_Focus, _Chromium, _Opera, _Opera_GX, _Vivaldi, _Yandex, _Brave, _Arora, _Lunascape, _QupZilla, _Coc_Coc, _Kindle, _Iceweasel, _Konqueror, _SeaMonkey, _Epiphany, _Whale, _360, _360EE, _360SE, _360EE_macOS, _360AI, _360AI_macOS, _360ENT, _UC, _QQBrowser, _BaiduBrowser, _Maxthon, _Sogou, _Liebao, _2345Browser, _115Browser, _TheWorld, _Quark, _Qiyu];
 const brandList = [_HONOR, _Huawei, _OPPO, _Vivo, _Xiaomi, _Meizu, _OnePlus, _Samsung, _Lenovo];
 const appList = [_QQ, _Baidu, _Wechat, _WechatWork, _Taobao, _Alipay, _Weibo, _Douban, _Suning, _iQIYI, _DingTalk, _Douyin, _Toutiao, _Facebook, _WhatsApp, _TikTok, _Line, _Telegram, _Instagram, _X, _Snapchat];
-const robotList = [_Twitterbot, _TelegramBot, _Googlebot, _Baiduspider, _Sogouspider, _Bingbot, _360Spider, _Bytespider, _YisouSpider, _YodaoBot, _YandexBot, _Yahoo, _ChatGPT, _ClaudeBot, _DuckDuckBot, _Google_Extended, _Amazonbot, _Headless];
+const robotList = [_Twitterbot, _TelegramBot, _Googlebot, _Baiduspider, _Sogouspider, _Bingbot, _360Spider, _Bytespider, _YisouSpider, _YodaoBot, _YandexBot, _Yahoo, _ChatGPT, _ClaudeBot, _DuckDuckBot, _Google_Extended, _Amazonbot, _Applebot, _PetalBot, _Headless];
 const engineList = [_WebKit, _Trident, _Gecko, _Servo, _Presto, _KHTML];
 const itemList = [].concat(browserList,brandList,appList,robotList);
 
@@ -137,12 +139,10 @@ const fixedParam = function(param){
     let {userAgent,engine,browser,browserVersion} = param;
     if(browser == 'Chrome'&&userAgent.match(/\S+Browser/)){
         browser = userAgent.match(/\S+Browser/)[0];
-    }
-    if(browser == 'Chrome'&&userAgent.match(/\S+Browser/)){
         browserVersion = userAgent.replace(/^.*Browser\/([\d.]+).*$/)?.[1]||'';
-    }
-    if(!browserVersion){
-        browserVersion = userAgent.match(/Version\/([\d.]+)/)?.[1]||'';
+        if(!browserVersion){
+            browserVersion = userAgent.match(/Version\/([\d.]+)/)?.[1]||'';
+        }
     }
     if (_Edge.parse(userAgent).is) {
         engine = parseInt(_Edge.parse(userAgent).version)>75?'Blink':'EdgeHTML';

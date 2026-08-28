@@ -6,7 +6,9 @@ export default {
         let version = ua.match(/HarmonyOS (\d+.\d+)/)?.[1]||ua.match(/OpenHarmony(\d+.\d+)/)?.[1]||ua.match(/ArkWeb\/(\d+.\d+)/)?.[1]||'';
         if(!version){
             let v = +ua.match(/HMSCore (\d+.\d+)/)?.[1]||0;
-            if(v>=6.1){
+            if(v>=7.0){
+                version =  '5.0';
+            }else if(v>=6.1){
                 version =  '4.0';
             }else if(v>=6.0){
                 version =  '3.0';

@@ -151,7 +151,7 @@ console.log('[浏览器指纹]',data.value);
         <tr><td>Instagram</td><td>Instagram客户端</td></tr>
         <tr><td>X</td><td>X客户端（原Twitter）</td></tr>
         <tr><td>Snapchat</td><td>Snapchat客户端</td></tr>
-        <tr><td rowspan="18">爬虫</td>
+        <tr><td rowspan="20">爬虫</td>
         <td>Googlebot</td><td>谷歌爬虫</td></tr>
         <tr><td>Baiduspider</td><td>百度爬虫</td></tr>
         <tr><td>Sogouspider</td><td>搜狗爬虫</td></tr>
@@ -161,14 +161,16 @@ console.log('[浏览器指纹]',data.value);
         <tr><td>YisouSpider</td><td>神马搜索爬虫</td></tr>
         <tr><td>YodaoBot</td><td>有道搜索爬虫</td></tr>
         <tr><td>YandexBot</td><td>Yandex搜索引擎爬虫</td></tr>
-        <tr><td>Yahoo</td><td>Yahoo蜘蛛</td></tr>
+        <tr><td>Yahoo</td><td>雅虎蜘蛛</td></tr>
         <tr><td>TelegramBot</td><td>Telegram蜘蛛</td></tr>
         <tr><td>ChatGPT</td><td>ChatGPT蜘蛛</td></tr>
         <tr><td>Twitterbot</td><td>Twitter蜘蛛</td></tr>
         <tr><td>ClaudeBot</td><td>Claude Code蜘蛛</td></tr>
         <tr><td>DuckDuckBot</td><td>DuckDuckGo蜘蛛</td></tr>
-        <tr><td>Amazonbot</td><td>Amazon蜘蛛</td></tr>
-        <tr><td>Google-Extended</td><td>Google AI蜘蛛</td></tr>
+        <tr><td>Amazonbot</td><td>亚马逊蜘蛛</td></tr>
+        <tr><td>Google-Extended</td><td>谷歌AI蜘蛛</td></tr>
+        <tr><td>Applebot</td><td>苹果蜘蛛</td></tr>
+        <tr><td>PetalBot</td><td>华为搜索蜘蛛</td></tr>
         <tr><td>Headless</td><td>谷歌无头浏览器</td></tr>
     </tbody>
 </table>
