@@ -49,7 +49,7 @@ export default {
         const screenColorDepth = globalThis?.screen.colorDepth;
         const screenPixelDepth = globalThis?.screen.pixelDepth;
         // 其他信息
-        const screenOrientation = screen.orientation?.type || '未知';
+        const screenOrientation = globalThis?.screen.orientation?.type || '未知';
         const isTouch = globalThis?.navigator?.maxTouchPoints>0||false;
 
         return {
