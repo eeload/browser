@@ -225,6 +225,7 @@ console.log('[浏览器指纹]',data.value);
         <tr><td>Tizen</td><td>Tizen操作系统</td></tr>
         <tr><td>watchOS</td><td>watchOS操作系统</td></tr>
         <tr><td>Wear OS</td><td>Wear OS操作系统</td></tr>
+        <tr><td>Fuchsia</td><td>Fuchsia操作系统</td></tr>
     </tbody>
 </table>
 
